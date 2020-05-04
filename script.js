@@ -10,7 +10,7 @@ $(document).ready(function () {
     //if statement for if the user leaves the input field empty it shows an error message, if they enter a city it runs the ajax function
     if (city != "") {
       //api key
-      var APIKey = "8f68f073f6effd90655cf43f02a0cf08";
+      var APIKey = "&appid=8f68f073f6effd90655cf43f02a0cf08";
       //queryURL
       var queryURL =
         "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey;
