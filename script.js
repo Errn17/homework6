@@ -9,18 +9,33 @@ $(document).ready(function () {
 
     //if statement for if the user leaves the input field empty it shows an error message, if they enter a city it runs the ajax function
     if (city != "") {
+      //api key
+      var APIKey = "8f68f073f6effd90655cf43f02a0cf08";
+      //queryURL
+      var queryURL =
+        "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey;
+
+      //ajax function pulling the data from the api
       $.ajax({
-        url:
-          "http://api.openweathermap.org/data/2.5/forecast?q=" +
-          city +
-          "$units=imperial" +
-          "&appid=439d4b804bc8187953eb36d2a8c26a02",
-        type: "GET",
-        dataType: "jsonp",
-        success: function (data) {
-          console.log(data);
-        },
+        url: queryURL,
+        method: "GET",
+      }).then(function (response) {
+        console.log(queryURL);
+        console.log(response);
       });
+
+      //   $.ajax({
+      //     url:
+      //       "https://api.openweathermap.org/data/2.5/weather?q=" +
+      //       city +
+      //       "$units=imperial" +
+      //       "&appid=cc9834ce5b4718ede07fa983166b3ccc",
+      //     type: "GET",
+      //     dataType: "jsonp",
+      //     success: function (data) {
+      //       console.log(data);
+      //     },
+      //   });
     } else {
       $("#error").html("Field is empty, add a city to continue!");
     }
