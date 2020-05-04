@@ -20,8 +20,20 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (response) {
+        //console logging to make sure the api is working correctly
         console.log(queryURL);
         console.log(response);
+
+        //adding some elements to the page to display once a city has been searched
+        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".humidity").text("Humidity: " + response.main.humidity);
+
+        //converting temp to farenheit
+        var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+        //adding farenheit temp to html
+        $(".temp").text("Temperature (F) " + tempF.toFixed(2));
       });
 
       //   $.ajax({
